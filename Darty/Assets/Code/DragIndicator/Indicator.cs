@@ -1,54 +1,72 @@
 using Assets.Code.DragIndicator;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Assets.Code.Core;
+using Assets.Code.DragDispatcher;
+using System.Collections;
 
 public class Indicator : MonoBehaviour
 {
 
-    public DragDispatcher2D Dispatcher;
+
+    public GameObject DartPrefab;
+    GameObject currentDart;
+    bool locked;
+   public float LockTimeout;
     // Start is called before the first frame update
     void Start()
     {
-        if (Dispatcher == null)
-        {
-            Dispatcher = gameObject.GetComponent<DragDispatcher2D>();
-            if (Dispatcher == null)
-            {
-                Debug.LogError("No Dispatcher Found");
-            }
-        }
-
+        initDart();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Dispatcher == null) return;
 
-        
-        switch (Dispatcher.Status)
+    public void DragStatusChanged(DragEvent dragEvent)
+    {
+        if (locked)
+        {
+            return;
+        }
+        switch (dragEvent.Status)
         {
             case DragStatus.Idle:
                 break;
             case DragStatus.Dragging:
-                DrawIndicator();
+                DrawIndicator(dragEvent);
                 break;
             case DragStatus.Relased:
+                launchDart(dragEvent.Delta.magnitude);
                 break;
             default:
                 break;
         }
     }
- 
 
-    void DrawIndicator()
+
+    void DrawIndicator(DragEvent dragEvent)
     {
-        var delta = Dispatcher.Delta;         
-        Debug.DrawRay(gameObject.transform.position, 3f * delta, Color.red); 
-        var zRotation = Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, zRotation + 90);
+
+        Debug.DrawRay(transform.position, 3f * dragEvent.Delta, Color.red);
+        transform.LookAt2D(dragEvent.Delta);
     }
 
+    void launchDart(float force)
+    {
+        if (currentDart == null) return;
+        currentDart.transform.parent = null;
+        currentDart.GetComponent<ILaunchable>().Launch(force);
+        currentDart = null;
+        StartCoroutine(Lock());
+    }
+    void initDart()
+    {
+        currentDart = Instantiate(DartPrefab, transform);
+    }
+
+    IEnumerator Lock()
+    {
+        locked = true;
+        yield return new WaitForSeconds(LockTimeout);
+        locked = false;
+        initDart();
+    }
 
 }

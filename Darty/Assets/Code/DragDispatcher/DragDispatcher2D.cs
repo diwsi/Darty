@@ -5,14 +5,39 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DragDispatcher2D : MonoBehaviour
 {
-     
-    [Range(0.1f,1f)]
-    public float DispatchSegment=0.1f;
 
-    public DragStatus Status { get; set; }
+    [Range(0.1f, 1f)]
+    public float DispatchSegment = 0.1f;
+
+    public UnityEvent<DragEvent> StatusChanged;
+    public UnityEvent<Vector2> Released;
+
+    private DragStatus status;
+    public DragStatus Status
+    {
+        get
+        {
+            return status;
+        }
+        set
+        {
+            if (value != status)
+            {
+                invokeEvent(value);
+            }else if (value == DragStatus.Dragging)
+            {
+                invokeEvent(value);
+            }
+            
+
+            status = value;
+        }
+    }
+
     public Vector2? Pivot { get; set; }
 
     public Vector2? DragPostion { get; set; }
@@ -30,16 +55,13 @@ public class DragDispatcher2D : MonoBehaviour
             return plotVector.normalized * dV;
         }
     }
-     
+    
 
     // Update is called once per frame
     void Update()
     {
         UpdateStatus();
-        // DrawIndicator();
     }
-     
-
 
     private void UpdateStatus()
     {
@@ -61,6 +83,7 @@ public class DragDispatcher2D : MonoBehaviour
         {
             Status = DragStatus.Relased;
             DragPostion = DragMapper.DragPoint;
+            Released.Invoke(Delta);
             return;
         }
 
@@ -70,8 +93,12 @@ public class DragDispatcher2D : MonoBehaviour
 
     }
 
-
-
-
-
+    void invokeEvent(DragStatus status)
+    {
+        StatusChanged.Invoke(new DragEvent()
+        {
+            Delta = Delta,
+            Status = status
+        });
+    }
 }
