@@ -1,15 +1,20 @@
+using Assets.Code.Target;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Target : MonoBehaviour
+public class Target : MonoBehaviour,ITarget
 {
     [Range(1,5)]
     public float Life=1f;
 
     public UnityEvent<float> TargetHit;
     public UnityEvent TargetDestroyed;
+    public UnityEvent TargetDestroyedInternal
+    {
+        get { return TargetDestroyed; }
+    }
 
     void OnCollisionEnter2D(Collision2D col)
     {
