@@ -11,6 +11,7 @@ public class DartBody : MonoBehaviour, ILaunchable
     bool Launched;
     [Range(0, 1000)]
     public float MaxPower = 500f;
+
     // Start is called before the first frame update
     void Start()
     {

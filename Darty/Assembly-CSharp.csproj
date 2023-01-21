@@ -63,11 +63,14 @@
     <Compile Include="Assets\Code\Dart\DartBody.cs" />
     <Compile Include="Assets\Code\DragIndicator\ILaunchable.cs" />
     <Compile Include="Assets\Code\DragDispatcher\DragEvent.cs" />
+    <Compile Include="Assets\Code\GUI\EndGamePanel.cs" />
     <Compile Include="Assets\Code\GUI\Messager.cs" />
+    <Compile Include="Assets\Code\Target\EndGameTrigger.cs" />
     <Compile Include="Assets\Code\Level\Level.cs" />
     <Compile Include="Assets\Code\Level\LevelManager.cs" />
     <Compile Include="Assets\Code\Spawner\Spawner.cs" />
     <Compile Include="Assets\Code\Level\SpawnSet.cs" />
+    <Compile Include="Assets\Code\Target\ITargetCollider.cs" />
     <Compile Include="Assets\Code\Target\ITarget.cs" />
     <Compile Include="Assets\Code\Target\TargetCollider.cs" />
     <Compile Include="Assets\Code\Target\Target.cs" />

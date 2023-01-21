@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5520141063226095135}
   m_Layer: 0
   m_Name: TargetType2
-  m_TagString: Untagged
+  m_TagString: TargetCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,7 +145,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5520141063226095130}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -177,6 +177,7 @@ MonoBehaviour:
   TargetDestroyed:
     m_PersistentCalls:
       m_Calls: []
+  DestroyEffect: {fileID: 8117127202941664663, guid: 04a1f24f7328edd49bf0a36a43e449ab, type: 3}
 --- !u!114 &5520141063226095135
 MonoBehaviour:
   m_ObjectHideFlags: 0

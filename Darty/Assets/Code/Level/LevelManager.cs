@@ -27,7 +27,7 @@ namespace Assets.Code.Level
             }
         }
 
-        void SetNextLevel()
+       public void SetNextLevel()
         {
             var level = CurrentLevel;
             if (level != null)
