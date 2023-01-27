@@ -11,12 +11,13 @@ public class DartBody : MonoBehaviour, ILaunchable
     bool Launched;
     [Range(0, 1000)]
     public float MaxPower = 500f;
-
+    public TrailRenderer Tail;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.simulated = false;
+        Tail.enabled = false;
     }
 
     // Update is called once per frame
@@ -35,6 +36,7 @@ public class DartBody : MonoBehaviour, ILaunchable
     public void Launch(float force)
     {
         if (Launched) return;
+        Tail.enabled =true;
         rb.simulated = true;
         rb.AddForce(-1f * transform.up * MaxPower * force);
         Launched = true;

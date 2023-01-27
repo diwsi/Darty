@@ -57,6 +57,8 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Code\Core\Motion\BaseMotion.cs" />
+    <Compile Include="Assets\Code\Core\Motion\IMotion.cs" />
     <Compile Include="Assets\Code\Core\Motion\MoveInTime.cs" />
     <Compile Include="Assets\Code\Core\Motion\VectorMotion.cs" />
     <Compile Include="Assets\Code\Core\TransformExtensions.cs" />
@@ -64,7 +66,16 @@
     <Compile Include="Assets\Code\DragIndicator\ILaunchable.cs" />
     <Compile Include="Assets\Code\DragDispatcher\DragEvent.cs" />
     <Compile Include="Assets\Code\GUI\EndGamePanel.cs" />
+    <Compile Include="Assets\Code\GUI\LevelCounter.cs" />
     <Compile Include="Assets\Code\GUI\Messager.cs" />
+    <Compile Include="Assets\Code\PowerUp\Handlers\BaseHandler.cs" />
+    <Compile Include="Assets\Code\PowerUp\Handlers\IPowerUpHandler.cs" />
+    <Compile Include="Assets\Code\PowerUp\Handlers\SlowDownHandler.cs" />
+    <Compile Include="Assets\Code\PowerUp\IPowerUp.cs" />
+    <Compile Include="Assets\Code\PowerUp\Repository\PowerUpManager.cs" />
+    <Compile Include="Assets\Code\PowerUp\Repository\PowerUpRepository.cs" />
+    <Compile Include="Assets\Code\PowerUp\Repository\PowerUpTypes.cs" />
+    <Compile Include="Assets\Code\PowerUp\PowerUp.cs" />
     <Compile Include="Assets\Code\Target\EndGameTrigger.cs" />
     <Compile Include="Assets\Code\Level\Level.cs" />
     <Compile Include="Assets\Code\Level\LevelManager.cs" />

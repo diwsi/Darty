@@ -1,13 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class VectorMotion : MonoBehaviour
+public class VectorMotion : BaseMotion
 {
-    public Vector3 Direction;
-    public float Speed;
-    void Update()
+    public override void Move()
     {
         gameObject.transform.position += Direction.normalized * Speed;
     }
+
 }

@@ -10,12 +10,15 @@ public class Indicator : MonoBehaviour
 
     public GameObject DartPrefab;
     GameObject currentDart;
+   public LineRenderer lineRenderer;
     bool locked;
    public float LockTimeout;
     // Start is called before the first frame update
     void Start()
     {
         initDart();
+        lineRenderer.SetPosition(0,transform.localPosition);
+        lineRenderer.SetPosition(1, transform.localPosition);
     }
 
 
@@ -43,8 +46,8 @@ public class Indicator : MonoBehaviour
 
     void DrawIndicator(DragEvent dragEvent)
     {
-
-        Debug.DrawRay(transform.position, 3f * dragEvent.Delta, Color.red);
+        lineRenderer.SetPosition(1, 3f * dragEvent.Delta);
+       // Debug.DrawRay(transform.position, 3f * dragEvent.Delta, Color.red);
         transform.LookAt2D(dragEvent.Delta);
     }
 
@@ -54,6 +57,7 @@ public class Indicator : MonoBehaviour
         currentDart.transform.parent = null;
         currentDart.GetComponent<ILaunchable>().Launch(force);
         currentDart = null;
+        lineRenderer.SetPosition(1, transform.localPosition);
         StartCoroutine(Lock());
     }
     void initDart()

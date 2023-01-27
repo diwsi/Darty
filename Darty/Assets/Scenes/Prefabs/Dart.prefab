@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxPower: 850
+  Tail: {fileID: 1730584672}
 --- !u!114 &2355272124589044990
 MonoBehaviour:
   m_ObjectHideFlags: 0
