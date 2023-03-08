@@ -47,7 +47,6 @@ public class Indicator : MonoBehaviour
     void DrawIndicator(DragEvent dragEvent)
     {
         lineRenderer.SetPosition(1, 3f * dragEvent.Delta);
-       // Debug.DrawRay(transform.position, 3f * dragEvent.Delta, Color.red);
         transform.LookAt2D(dragEvent.Delta);
     }
 

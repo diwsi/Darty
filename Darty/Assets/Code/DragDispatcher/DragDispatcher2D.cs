@@ -46,6 +46,7 @@ public class DragDispatcher2D : MonoBehaviour
     {
         get
         {
+            
             if (!Pivot.HasValue || !DragPostion.HasValue)
             {
                 return new Vector2();

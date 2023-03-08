@@ -874,7 +874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DartPrefab: {fileID: 7524161949893541777, guid: 4bf5a54d348f29f4c9d3ca61fe442537, type: 3}
   lineRenderer: {fileID: 1762224231}
-  LockTimeout: 0.2
+  LockTimeout: 1
 --- !u!114 &1003124806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1512,6 +1512,15 @@ MonoBehaviour:
       SpawnTime: 8
     - SpawnType: 2
       SpawnTime: 9
+  - LevelNo: 3
+    Completed: 0
+    Spawns:
+    - SpawnType: 0
+      SpawnTime: 6
+    - SpawnType: 2
+      SpawnTime: 8
+    - SpawnType: 2
+      SpawnTime: 9
   LevelChange:
     m_PersistentCalls:
       m_Calls:
@@ -2001,11 +2010,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5520141063226095131, guid: 6984815ec3591974dac4ad3edea6679e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21774976
+      value: -5.32
       objectReference: {fileID: 0}
     - target: {fileID: 5520141063226095131, guid: 6984815ec3591974dac4ad3edea6679e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14879961
+      value: 4.54
       objectReference: {fileID: 0}
     - target: {fileID: 5520141063226095131, guid: 6984815ec3591974dac4ad3edea6679e, type: 3}
       propertyPath: m_LocalPosition.z
